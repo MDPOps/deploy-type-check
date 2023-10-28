@@ -23,6 +23,10 @@ runs:
           hosts:
           ${{ inputs.deployHostPaths }}
       id: changed-files
+      
+    - name: Display Outputs
+      run: |
+        echo deployType=${{ steps.changed-files.outputs.hosts_any_changed == 'true' && 'hosts' || 'apps' }}
 
 
 outputs:
