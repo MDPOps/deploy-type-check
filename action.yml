@@ -23,7 +23,7 @@ runs:
           hosts:
           ${{ (inputs.deployHostPaths == '' && '- .github/**') || inputs.deployHostPaths }}
           ${{ (inputs.deployHostPaths == '' && '- deploy/**') || '' }}
-    id: changed-files
+      id: changed-files
       
     - name: Display Outputs
       shell: bash
