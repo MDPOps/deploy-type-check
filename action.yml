@@ -10,9 +10,6 @@ inputs:
   deployHostPaths:
     description: DeployHost Paths
     required: false
-    default: |
-      - '.github/**'
-      - 'deploy/**'
 
 
 runs:
@@ -24,7 +21,7 @@ runs:
       with:
         files_yaml: |
           hosts:
-          ${{ inputs.deployHostPaths }}
+          ${{ (inputs.deployHostPaths == '' && '- .github/**\n- deploy/**') || inputs.deployHostPaths }}
       id: changed-files
       
     - name: Display Outputs
