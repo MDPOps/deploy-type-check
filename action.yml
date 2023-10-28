@@ -8,8 +8,11 @@ description: GitHub Action for Check DeployType
 
 inputs:
   deployHostPaths:
-    description: DeployHostPaths
-    required: true
+    description: DeployHost Paths
+    required: false
+    default: |
+      - '.github/**'
+      - 'deploy/**'
 
 
 runs:
