@@ -7,8 +7,8 @@ description: GitHub Action for Check DeployType
 
 
 inputs:
-  hostPaths:
-    description: HostDeployFile Paths
+  deployHostPaths:
+    description: DeployHostPaths
     required: true
 
 
@@ -21,11 +21,11 @@ runs:
       with:
         files_yaml: |
           hosts:
-          ${{ inputs.hostPaths }}
+          ${{ inputs.deployHostPaths }}
       id: changed-files
 
 
 outputs:
   deployType:
-    description: DeployType=hosts/apps
+    description: DeployType=[hosts/apps]
     value: ${{ steps.changed-files.outputs.hosts_any_changed == 'true' && 'hosts' || 'apps' }}
