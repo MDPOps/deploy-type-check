@@ -25,6 +25,7 @@ runs:
       id: changed-files
       
     - name: Display Outputs
+      shell: bash
       run: |
         echo deployType=${{ steps.changed-files.outputs.hosts_any_changed == 'true' && 'hosts' || 'apps' }}
 
