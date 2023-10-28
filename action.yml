@@ -8,7 +8,7 @@ description: GitHub Action for Check DeployType
 
 inputs:
   hostPaths:
-    description: Host Deploy Files
+    description: HostDeployFile Paths
     required: true
 
 
@@ -16,7 +16,7 @@ runs:
   using: composite
   steps:
   
-    - name: Check Changed Files
+    - name: Check ChangedFiles
       uses: tj-actions/changed-files@v40
       with:
         files_yaml: |
