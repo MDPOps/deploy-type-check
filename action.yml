@@ -1,0 +1,31 @@
+name: Check DeployType by MDP
+branding:
+  icon: truck
+  color: red
+author: Clark159
+description: GitHub Action for Check DeployType
+
+
+inputs:
+  hostPaths:
+    description: Host Deploy Files
+    required: true
+
+
+runs:
+  using: composite
+  steps:
+  
+    - name: Check Changed Files
+      uses: tj-actions/changed-files@v40
+      with:
+        files_yaml: |
+          hosts:
+          ${{ inputs.hostPaths }}
+      id: changed-files
+
+
+outputs:
+  deployType:
+    description: DeployType=hosts/apps
+    value: ${{ steps.changed-files.outputs.hosts_any_changed == 'true' && 'hosts' || 'apps' }}
